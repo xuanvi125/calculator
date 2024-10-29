@@ -43,9 +43,9 @@ pipeline {
                         // Sao chép file đến remote server
                         sh '''
                             echo "Copying file to remote server..."
-                            scp -o StrictHostKeyChecking=no /var/jenkins_home/workspace/calculator-cicd/target/calculator-0.0.1-SNAPSHOT.jar ec2-user@54.81.25.106:/home/ec2-user/
+                            scp -o StrictHostKeyChecking=no /var/jenkins_home/workspace/calculator-cicd/target/calculator-0.0.1-SNAPSHOT.jar ec2-user@100.29.13.93:/home/ec2-user/
                             # SSH vào remote server và chạy file JAR
-                            ssh -o StrictHostKeyChecking=no ec2-user@54.81.25.106 '
+                            ssh -o StrictHostKeyChecking=no ec2-user@100.29.13.93 '
                             PID=$(sudo lsof -t -i:7070)
                             if [ -n "$PID" ]; then
                                 echo "Killing process on port 7070 (PID: $PID)"
