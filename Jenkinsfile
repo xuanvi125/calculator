@@ -5,7 +5,7 @@ pipeline {
         EC2_SSH_KEY = credentials('ec2-ssh-key') // ID của SSH Key Pair
     }
     tools {
-            jdk 'JDK11'
+            jdk 'JDK21'
             maven 'Maven'
     }
     stages {
