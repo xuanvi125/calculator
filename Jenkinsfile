@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        GIT_CREDENTIALS = credentials('jenkins-pipeline') // Sử dụng ID của credential
+        GIT_CREDENTIALS = credentials('github-account') // Sử dụng ID của credential
         EC2_SSH_KEY = credentials('ec2-ssh-key') // ID của SSH Key Pair
     }
     tools {
@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Sử dụng thông tin xác thực để truy cập repository
-                git url: 'https://github.com/xuanvi125/math-service.git', branch: 'main', credentialsId: 'jenkins-pipeline'
+                git url: 'https://github.com/xuanvi125/calculator.git', branch: 'main', credentialsId: 'github-account'
             }
         }
         stage('Build') {
@@ -43,9 +43,9 @@ pipeline {
                         // Sao chép file đến remote server
                         sh '''
                             echo "Copying file to remote server..."
-                            scp -o StrictHostKeyChecking=no /var/jenkins_home/workspace/hello-world-pipeline/target/demo-0.0.1-SNAPSHOT.jar ec2-user@54.237.165.127:/home/ec2-user/
+                            scp -o StrictHostKeyChecking=no /var/jenkins_home/workspace/calculator-cicd/target/calculator-0.0.1-SNAPSHOT.jar ec2-user@ip-172-31-36-238:/home/ec2-user/
                             # SSH vào remote server và chạy file JAR
-                            ssh -o StrictHostKeyChecking=no ec2-user@54.237.165.127 '
+                            ssh -o StrictHostKeyChecking=no ec2-user@ip-172-31-36-238 '
                             PID=$(sudo lsof -t -i:7070)
                             if [ -n "$PID" ]; then
                                 echo "Killing process on port 7070 (PID: $PID)"
@@ -54,7 +54,7 @@ pipeline {
                                 echo "No process running on port 7070"
                             fi
                             # run jar file
-                            nohup java -jar /home/ec2-user/demo-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
+                            nohup java -jar /home/ec2-user/calculator-0.0.1-SNAPSHOT.jar > /dev/null 2>&1 &
                             exit 0'
                         
                         '''
