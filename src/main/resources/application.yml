@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: calculator
+
+application:
+  operation:
+    epsilon: 1e-6
