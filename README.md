@@ -1,6 +1,6 @@
 # Basic Calculator Application
 
-This is a simple calculator application built using Java and Spring Boot. 
+This is a simple calculator application built using Java and Spring Boot.
 The application supports basic arithmetic operations such as addition, subtraction, multiplication, and division (10<sup>-6</sup> accuracy).
 This application uses for unit testing, test coverage tools, and CI/CD
 
@@ -28,25 +28,38 @@ This application uses for unit testing, test coverage tools, and CI/CD
 ## Running the Application in local
 
 1. **Clone the repository:**
+
    ```sh
-   git clone https://github.com/nhanng9642/calculator.git
+   git clone https://github.com/xuanvi125/calculator.git
    cd calculator
-   
+
+   ```
+
 2. **Build the project using Maven**
-    ```sh
+
+   ```sh
    mvn clean install
-   
+
+   ```
+
 3. **Run the application**
-    ```sh
-    mvn spring-boot:run
-   
+
+   ```sh
+   mvn spring-boot:run
+
+   ```
+
 4. **Access the application**
-    http://localhost:8080/calculator
+   http://localhost:7070/calculator
 
 ## Running the Unit Tests
+
 1. **Run the unit tests using Maven**
-    ```sh
-    mvn clean test
+
+   ```sh
+   mvn clean test
+
+   ```
 
 2. **View the test coverage report**
-    Open the file `target/site/jacoco/index.html` in a web browser.
+   Open the file `target/site/jacoco/index.html` in a web browser.
